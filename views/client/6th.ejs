@@ -1,0 +1,89 @@
+<%- include('../includes/header.ejs') %>
+<link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+<main>
+    <!-- <h1>6th class</h1>
+    <div class="container">
+        <div class="row">
+            <% if (students.length > 0) { %>
+                <% for (let student of students) { %>
+            <div class="col-lg-6">
+                <h1> <%= student.name %></h1>
+                <h2><%= student.phone %></h2>
+                <h2><%= student.medium %></h2>
+                <h2><%= student.adnum %></h2>
+                <a href="/class6/<%= student.id %>">send sms</a>
+            </div>
+            <% } %>
+      
+            <% } %>
+        </div>
+    </div> -->
+
+    <div class="container">
+        <h1>&#x2728;Harry Potter Characters &#x2728;</h1>
+        <div id="searchWrapper">
+            <input
+                type="text"
+                name="searchBar"
+                id="searchBar"
+                placeholder="search for a character"
+            />
+        </div>
+        <ul id="charactersList"></ul>
+    </div>
+
+</main>
+
+<script>
+    const charactersList = document.getElementById('charactersList');
+const searchBar = document.getElementById('searchBar');
+let hpCharacters = [];
+
+searchBar.addEventListener('keyup', (e) => {
+    const searchString = e.target.value.toLowerCase();
+
+    const filteredCharacters = hpCharacters.filter((character) => {
+        return (
+            character.name.toLowerCase().includes(searchString)
+        );
+    });
+    displayCharacters(filteredCharacters);
+});
+
+const loadCharacters = async () => {
+    try {
+        const res = await fetch('http://localhost:3000/6');
+        hpCharacters = await res.json();
+        displayCharacters(hpCharacters);
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+const displayCharacters = (characters) => {
+    const htmlString = characters
+        .map((character) => {
+            const link = '/class6/' + character._id;
+            return `
+            <li class="character">
+                <h2>${character.name}</h2>
+                <p>House: ${character.phone}</p>
+                <a href= ${link}>send sms</a>
+            </li>
+        `;
+        })
+        .join('');
+    charactersList.innerHTML = htmlString;
+};
+
+loadCharacters();
+
+</script>
+</body>
+
+</html>
+<!-- <%- include('../includes/footer.ejs') %> -->

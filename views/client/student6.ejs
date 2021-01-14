@@ -1,0 +1,31 @@
+<%- include('../includes/header.ejs') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+<main>
+    
+                <h1> <%= student.name %></h1>
+                <h2><%= student.phone %></h2>
+                <h2><%= student.medium %></h2>
+                <h2><%= student.adnum %></h2>
+                <form action="/send" method="POST" >
+                        
+                        
+                    <div class="form-group">
+                        <input type="hidden" id="name" name="name" value="<%= student.name %>">
+                        <input type="hidden" id="phone" name="phone" value="<%= student.phone %>">
+                        <input type="hidden" id="medium" name="medium" value="<%= student.medium %>">
+                        <input type="hidden" id="adnum" name="adnum" value="<%= student.adnum %>">
+                        <input type="hidden" id="class" name="class" value="<%= student.class %>">
+                    </div>
+                
+                    
+                    <button type="submit" class="btn btn-primary">send sms</button>
+                  </form>
+                
+            
+</main>
+
+<%- include('../includes/footer.ejs') %>

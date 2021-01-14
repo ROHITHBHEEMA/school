@@ -1,0 +1,34 @@
+<%- include('../includes/header.ejs') %>
+<link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+    
+    <main>
+        <form action="/add-6th-class" method="POST" >
+            <div class="form-group" >
+              <label for="name">Name</label>
+              <input type="text" name="name" class="form-control" id="name">
+            </div>
+
+            <div class="form-group" >
+                <label for="phone">Phone Number</label>
+                <input type="number" name="phone" class="form-control" id="phone">
+            </div>
+            
+            <div class="form-group" >
+                <label for="adnum">Admission Number</label>
+                <input type="number" name="adnum" class="form-control" id="adnum">
+            </div>
+
+            <div class="form-group" >
+                <label for="name">Medium</label>
+                <input type="text" name="medium" class="form-control" id="medium">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </main>
+
+<%- include('../includes/footer.ejs') %>
