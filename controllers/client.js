@@ -178,7 +178,7 @@ exports.postsend = (req,res,next) =>{
     service: 'gmail',
     auth: {
       user: 'rohithbheema16@gmail.com',
-      pass: 'Rohith@news'
+      pass: '******'
     }
   });
   
